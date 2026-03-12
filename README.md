@@ -1,27 +1,30 @@
-Aplikacja wyświetla zaszyfrowaną wskazówkę, która może naprowadzić użytkownika na ukryty 5-cyfrowy PIN. Kod jest oparty na słowie „magic”, a każda litera występuje w nim wielokrotnie – liczba jej powtórzeń to jedna cyfra PIN-u. Jednak użytkownik nie otrzymuje tej instrukcji wprost – musi sam wydedukować mechanizm działania aplikacji na podstawie tekstu i nazwy.
+# Magic
 
-Czyli to coś więcej niż tylko zabawa z Tkinterem. To:
-logiczna łamigłówka,
+Projekt powstał na samym początku nauki programowania z GUI.
+Tutaj po raz pierwszy napisałem własną funkcję w osobnym pliku (magic.py) i zaimportowałem ją do drugiego pliku z interfejsem (magic_gui.py).
+To była praktyczna lekcja pisania własnych modułów i importowania ich w Pythonie.
+Został w oryginalnej formie – bez zmian i bez upiększania.
 
-gra w dedukcję,
+Prosty skrypt z graficznym interfejsem, który udaje "magiczną" sztuczkę z liczbą.  
+Użytkownik widząc losową liczbę, musi odganąć wynik.
 
-test kreatywności,
+W tym projekcie nauczyłem się separacji logiki od interfejsu.
 
-zadanie inżynierii wstecznej.
+### Co robi
 
-Możliwości rozwoju (opcjonalnie, jeśli chcesz iść dalej):
-Zamiana kodu na hash PIN-u:
+- Losuje 5 cyfr (1–5), które tworzą PIN
+- Tworzy "magiczny kod" – litery "m a g i c" powtórzone tyle razy, ile wskazuje cyfra (np. 2 → mm, 1 → a, 3 → ggg itd.)
+  
+  np. jeśli cyfry to [2,1,3,4,5], PIN = '21345', code = 'mmagggiiiiccccc'
+- Wyświetla PIN i prosi o wpisanie kodu 
+- Sprawdza, czy wpisany kod zgadza się z wygenerowanym
 
-Użytkownik musi zgadnąć, a Ty sprawdzasz np. hashlib.sha256(pin.encode()).hexdigest().
+### Wymagania
 
-Dodanie systemu punktów / czasu – np. ile prób zajęło odgadnięcie.
+Python 3 + tkinter (standardowa biblioteka)
 
-Tryb tekstowy (CLI) – dla nauki obsługi inputu i warunków.
+### Uruchomienie
 
-Zamiana liter kodu (magic) na inny zestaw – np. losowy alfabet, emoji, albo system heksadecymalny.
-
-Wersja CTF (dla innych):
-
-Wersja .exe bez magic.py.
-
-Zadanie: Odzyskaj PIN z samego code.
+```bash
+python magic_gui.py
+```
